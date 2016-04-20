@@ -244,6 +244,7 @@ ostream & operator<<(ostream & strm, const OpalProductInfo & info)
 OpalManager::OpalManager()
   : productInfo(OpalProductInfo::Default())
   , defaultUserName(PProcess::Current().GetUserName())
+  , m_ThreadId(PProcess::Current().GetThreadId())
   , defaultDisplayName(defaultUserName)
   , rtpPayloadSizeMax(1400) // RFC879 recommends 576 bytes, but that is ancient history, 99.999% of the time 1400+ bytes is used.
   , rtpPacketSizeMax(10*1024)
