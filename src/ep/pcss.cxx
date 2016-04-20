@@ -236,6 +236,7 @@ PSoundChannel * OpalPCSSEndPoint::CreateSoundChannel(const OpalPCSSConnection & 
            << "\" for " << (isSource ? "record" : "play") << "ing.");
     return NULL;
   }
+  soundChannel->SetErrorThreadId(manager.GetThreadId());
   PTRACE_CONTEXT_ID_SET(*soundChannel, connection);
 
   unsigned channels = mediaFormat.GetOptionInteger(OpalAudioFormat::ChannelsOption());
