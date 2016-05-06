@@ -89,10 +89,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>..\..\..\Lib2010\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>..\..\Lib2010\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>..\..\..\Lib2010\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>..\..\Lib2010\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IntDir>$(OutDir)intermediate</IntDir>
@@ -103,16 +103,16 @@
     <TargetName>opal64sd</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>..\..\..\Lib2010\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>..\..\Lib2010\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>..\..\..\Lib2010\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>..\..\Lib2010\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='No Trace|Win32'">
-    <OutDir>..\..\..\Lib2010\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>..\..\Lib2010\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='No Trace|x64'">
-    <OutDir>..\..\..\Lib2010\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>..\..\Lib2010\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IntDir>$(OutDir)intermediate</IntDir>
