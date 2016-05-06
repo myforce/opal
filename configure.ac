@@ -641,7 +641,7 @@ OPAL_SIMPLE_OPTION(rfc2435,OPAL_RFC2435, [whether to enable RFC2435 support (exp
 
 dnl MSWIN_DISPLAY  aec,Accoustic Echo Cancellation
 
-dnl MSWIN_DEFAULT aec,Disabled
+dnl MSWIN_DEFAULT aec,Enabled
 dnl MSWIN_DEFINE   aec,OPAL_AEC
 OPAL_SIMPLE_OPTION(aec,OPAL_AEC, [whether to enable accoustic echo cancellation support])
 
