@@ -131,13 +131,13 @@ OpalConnection::OpalConnection(OpalCall & call,
   , remotePartyName(token)
   , callEndReason(NumCallEndReasons)
   , silenceDetector(NULL)
+  , m_jitterParams(endpoint.GetManager().GetJitterParameters())
+  , m_rxBandwidthAvailable(endpoint.GetInitialBandwidth(OpalBandwidth::Rx))
+  , m_txBandwidthAvailable(endpoint.GetInitialBandwidth(OpalBandwidth::Tx))
 #if OPAL_AEC
   , echoCanceler(NULL)
 #endif
 #if OPAL_PTLIB_DTMF
-  , m_jitterParams(endpoint.GetManager().GetJitterParameters())
-  , m_rxBandwidthAvailable(endpoint.GetInitialBandwidth(OpalBandwidth::Rx))
-  , m_txBandwidthAvailable(endpoint.GetInitialBandwidth(OpalBandwidth::Tx))
   , m_dtmfScaleMultiplier(1)
   , m_dtmfScaleDivisor(1)
   , m_dtmfDetectNotifier(PCREATE_NOTIFIER(OnDetectInBandDTMF))

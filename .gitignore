@@ -1,9 +1,9 @@
 revision.h
 config.log
 config.status
-opal.pc
-opal.spec
-opal_cfg.dxy
+/bin
+samples/
+*.user
 lib*
 html
 include/opal_config.h
@@ -66,4 +66,3 @@ plugins/audio/Opus/opus/*/*.lo
 plugins/audio/Opus/opus/*/*/*.lo
 plugins/audio/G.722.1/libg722_1/tests/regression_tests.sh
 plugins/audio/SILK/SILK_SDK/obj_linux_x86_64
-
