@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Android">
@@ -116,7 +116,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>..\..\..\Lib2013\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>..\..\Lib2013\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>..\..\..\Lib2013\$(Platform)\$(Configuration)\</OutDir>
@@ -134,13 +134,13 @@
     <LibraryPath>$(ProjectDir)..\..\lib;$(ProjectDir)..\..\..\ptlib\lib;$(PTLIBDIR)..\..\..\ptlib\lib;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>..\..\..\Lib2013\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>..\..\Lib2013\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>..\..\..\Lib2013\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='No Trace|Win32'">
-    <OutDir>..\..\..\Lib2013\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>..\..\Lib2013\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='No Trace|x64'">
     <OutDir>..\..\..\Lib2013\$(Platform)\$(Configuration)\</OutDir>
@@ -1917,7 +1917,6 @@ exit 0
     <None Include="..\csharp\SWIGTYPE_p_unsigned_int.cs" />
     <None Include="..\csharp\SWIGTYPE_p_void.cs" />
     <None Include="..\..\configure.ac" />
-
     <None Include="..\asn\gcc.asn" />
     <None Include="..\asn\h225.asn" />
     <None Include="..\asn\h235.asn" />
