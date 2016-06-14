@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -97,8 +97,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(ProjectDir)..\..\lib\</OutDir>
-    <IntDir>$(OutDir)$(Platform)\$(Configuration)\dll\</IntDir>
+    <OutDir>..\..\..\Lib2013\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(OutDir)intermediate</IntDir>
     <TargetName>opald</TargetName>
     <ExecutablePath>$(ProjectDir)..\..\..\ptlib\lib;$(ExecutablePath)</ExecutablePath>
     <IncludePath>$(ProjectDir)..\..\lib\$(Platform)\include;$(ProjectDir)..\..\include;$(ProjectDir)..\..\..\ptlib\lib\$(Platform)\include;$(ProjectDir)..\..\..\ptlib\include;$(PTLIBDIR)..\..\..\ptlib\lib\$(Platform)\include;$(PTLIBDIR)..\..\..\ptlib\include;$(IncludePath)</IncludePath>
@@ -106,8 +106,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(ProjectDir)..\..\lib\</OutDir>
-    <IntDir>$(OutDir)$(Platform)\$(Configuration)\dll\</IntDir>
+    <OutDir>..\..\..\Lib2013\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(OutDir)intermediate</IntDir>
     <TargetName>opal64d</TargetName>
     <ExecutablePath>$(ProjectDir)..\..\..\ptlib\lib;$(ExecutablePath)</ExecutablePath>
     <IncludePath>$(ProjectDir)..\..\lib\$(Platform)\include;$(ProjectDir)..\..\include;$(ProjectDir)..\..\..\ptlib\lib\$(Platform)\include;$(ProjectDir)..\..\..\ptlib\include;$(PTLIBDIR)..\..\..\ptlib\lib\$(Platform)\include;$(PTLIBDIR)..\..\..\ptlib\include;$(IncludePath)</IncludePath>
@@ -116,16 +116,16 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <ExecutablePath>$(ProjectDir)..\..\..\ptlib\lib;$(ExecutablePath)</ExecutablePath>
-    <OutDir>$(ProjectDir)..\..\lib\</OutDir>
-    <IntDir>$(OutDir)$(Platform)\$(Configuration)\dll\</IntDir>
+    <OutDir>..\..\..\Lib2013\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(OutDir)intermediate</IntDir>
     <TargetName>opal</TargetName>
     <IncludePath>$(ProjectDir)..\..\lib\$(Platform)\include;$(ProjectDir)..\..\include;$(ProjectDir)..\..\..\ptlib\lib\$(Platform)\include;$(ProjectDir)..\..\..\ptlib\include;$(PTLIBDIR)..\..\..\ptlib\lib\$(Platform)\include;$(PTLIBDIR)..\..\..\ptlib\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)..\..\lib;$(ProjectDir)..\..\..\ptlib\lib;$(PTLIBDIR)..\..\..\ptlib\lib;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ExecutablePath>$(ProjectDir)..\..\..\ptlib\lib;$(ExecutablePath)</ExecutablePath>
-    <OutDir>$(ProjectDir)..\..\lib\</OutDir>
-    <IntDir>$(OutDir)$(Platform)\$(Configuration)\dll\</IntDir>
+    <OutDir>..\..\..\Lib2013\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(OutDir)intermediate</IntDir>
     <TargetName>opal64</TargetName>
     <IncludePath>$(ProjectDir)..\..\lib\$(Platform)\include;$(ProjectDir)..\..\include;$(ProjectDir)..\..\..\ptlib\lib\$(Platform)\include;$(ProjectDir)..\..\..\ptlib\include;$(PTLIBDIR)..\..\..\ptlib\lib\$(Platform)\include;$(PTLIBDIR)..\..\..\ptlib\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)..\..\lib;$(ProjectDir)..\..\..\ptlib\lib;$(PTLIBDIR)..\..\..\ptlib\lib;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
@@ -133,8 +133,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='No Trace|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(ProjectDir)..\..\lib\</OutDir>
-    <IntDir>$(OutDir)$(Platform)\$(Configuration)\dll\</IntDir>
+    <OutDir>..\..\..\Lib2013\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(OutDir)intermediate</IntDir>
     <TargetName>opaln</TargetName>
     <ExecutablePath>$(ProjectDir)..\..\..\ptlib\lib;$(ExecutablePath)</ExecutablePath>
     <IncludePath>$(ProjectDir)..\..\lib\$(Platform)\include;$(ProjectDir)..\..\include;$(ProjectDir)..\..\..\ptlib\lib\$(Platform)\include;$(ProjectDir)..\..\..\ptlib\include;$(PTLIBDIR)..\..\..\ptlib\lib\$(Platform)\include;$(PTLIBDIR)..\..\..\ptlib\include;$(IncludePath)</IncludePath>
@@ -142,8 +142,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='No Trace|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(ProjectDir)..\..\lib\</OutDir>
-    <IntDir>$(OutDir)$(Platform)\$(Configuration)\dll\</IntDir>
+    <OutDir>..\..\..\Lib2013\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(OutDir)intermediate</IntDir>
     <TargetName>opal64n</TargetName>
     <ExecutablePath>$(ProjectDir)..\..\..\ptlib\lib;$(ExecutablePath)</ExecutablePath>
     <IncludePath>$(ProjectDir)..\..\lib\$(Platform)\include;$(ProjectDir)..\..\include;$(ProjectDir)..\..\..\ptlib\lib\$(Platform)\include;$(ProjectDir)..\..\..\ptlib\include;$(PTLIBDIR)..\..\..\ptlib\lib\$(Platform)\include;$(PTLIBDIR)..\..\..\ptlib\include;$(IncludePath)</IncludePath>

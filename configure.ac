@@ -88,6 +88,8 @@ dnl ########################################################################
 dnl Extract OPAL version number
 
 dnl MSWIN_DISPLAY version,Version
+
+dnl MSWIN_DEFAULT version,Enabled
 dnl MSWIN_VERSION version,OPAL_MAJOR=MAJOR_VERSION
 dnl MSWIN_VERSION version,OPAL_MINOR=MINOR_VERSION
 dnl MSWIN_VERSION version,OPAL_BUILD=BUILD_NUMBER
@@ -167,6 +169,7 @@ OPAL_CHECK_PTLIB_OPTION([GStreamer],    [PTLIB_GSTREAMER])
 dnl ########################################################################
 dnl SRTP
 dnl MSWIN_DISPLAY libsrtp,Cisco libSRTP support
+dnl MSWIN_DEFAULT libsrtp,Enabled
 dnl MSWIN_DEFINE  libsrtp,OPAL_SRTP=2
 
 SRTP_MSG="no"
@@ -245,6 +248,8 @@ MY_MODULE_OPTION(
 )
 
 dnl MSWIN_DISPLAY  aec,Accoustic Echo Cancellation
+
+dnl MSWIN_DEFAULT aec,Disabled
 dnl MSWIN_DEFINE   aec,OPAL_AEC
 OPAL_SIMPLE_OPTION(aec,OPAL_AEC, [accoustic echo cancellation support], [SPEEXDSP_USABLE])
 
@@ -253,6 +258,8 @@ dnl ########################################################################
 dnl CAPI ISDN
 
 dnl MSWIN_DISPLAY capi,CAPI (isdn) Line Interface Device
+
+dnl MSWIN_DEFAULT capi,Disabled
 dnl MSWIN_DEFINE  capi,OPAL_CAPI
 
 OPAL_MODULE_OPTION(
@@ -275,6 +282,7 @@ AC_PATH_PROG(SWIG, swig)
 dnl ########################################################################
 dnl Java JNI Support
 dnl MSWIN_DISPLAY     java,Java interface
+dnl MSWIN_DEFAULT java,Disabled
 dnl MSWIN_CHECK_FILE  java,include\jni.h,OPAL_JAVA=1
 dnl MSWIN_DIR_SYMBOL  java,JAVA_DIR
 dnl MSWIN_CHECK_DIR   java,%JAVA_HOME%\
@@ -296,6 +304,7 @@ OPAL_MODULE_OPTION(
 dnl ########################################################################
 dnl C# Support
 dnl MSWIN_DISPLAY  csharp,C# interface
+dnl MSWIN_DEFAULT csharp,Disabled
 dnl MSWIN_DEFINE   csharp,OPAL_CSHARP
 OPAL_SIMPLE_OPTION(csharp,OPAL_CSHARP, [C-sharp interface])
 
@@ -327,97 +336,141 @@ dnl ########################################################################
 dnl Check for optional features
 
 dnl MSWIN_DISPLAY  video,Video
+
+dnl MSWIN_DEFAULT video,Disabled
 dnl MSWIN_DEFINE   video,OPAL_VIDEO
 OPAL_SIMPLE_OPTION(video,OPAL_VIDEO, [video support], [OPAL_PTLIB_VIDEO])
 
 dnl MSWIN_DISPLAY  sdp,SDP support
+
+dnl MSWIN_DEFAULT sdp,Disabled
 dnl MSWIN_DEFINE   sdp,OPAL_SDP
 OPAL_SIMPLE_OPTION(sdp,OPAL_SDP, [SDP protocol support])
 
 dnl MSWIN_DISPLAY  sip,SIP support
+
+dnl MSWIN_DEFAULT sip,Enabled
 dnl MSWIN_DEFINE   sip,OPAL_SIP
 OPAL_SIMPLE_OPTION(sip,OPAL_SIP, [SIP protocol support], [OPAL_SDP])
 
 dnl MSWIN_DISPLAY  h323,H.323 support
+
+dnl MSWIN_DEFAULT h323,Enabled
 dnl MSWIN_DEFINE   h323,OPAL_H323
 OPAL_SIMPLE_OPTION(h323,OPAL_H323, [H.323 protocol support], [OPAL_PTLIB_ASN])
 
 dnl MSWIN_DISPLAY  iax2,IAX2 support
+
+dnl MSWIN_DEFAULT iax2,Enabled
 dnl MSWIN_DEFINE   iax2,OPAL_IAX2
 OPAL_SIMPLE_OPTION(iax2,OPAL_IAX2, [IAX2 protocol support])
 
 dnl MSWIN_DISPLAY  skinny,Cisco SCCP (skinny) support
+
+dnl MSWIN_DEFAULT skinny,Disabled
 dnl MSWIN_DEFINE   skinny,OPAL_SKINNY
 OPAL_SIMPLE_OPTION(skinny,OPAL_SKINNY, [Cisco SCCP (skinny) support])
 
 dnl MSWIN_DISPLAY  h224,H.224 support
+
+dnl MSWIN_DEFAULT h224,Disabled
 dnl MSWIN_DEFINE   h224,OPAL_HAS_H224
 OPAL_SIMPLE_OPTION(h224,OPAL_HAS_H224, [H.224 protocol support], [OPAL_PTLIB_ASN])
 
 dnl MSWIN_DISPLAY  h281,H.281 (Far End Camera Control) support
+
+dnl MSWIN_DEFAULT h281,Enabled
 dnl MSWIN_DEFINE   h281,OPAL_HAS_H281
 OPAL_SIMPLE_OPTION(h281,OPAL_HAS_H281, [H.281 (Far End Camera Control) protocol support], [OPAL_HAS_H224])
 
 dnl MSWIN_DISPLAY  t38,T.38 capability
+
+dnl MSWIN_DEFAULT t38,Enabled
 dnl MSWIN_DEFINE   t38,OPAL_T38_CAPABILITY
 OPAL_SIMPLE_OPTION(t38,OPAL_T38_CAPABILITY, [T.38 capability support])
 
 dnl MSWIN_DISPLAY  presence,Presence support
+
+dnl MSWIN_DEFAULT presence,Enabled
 dnl MSWIN_DEFINE   presence,OPAL_HAS_PRESENCE
 OPAL_SIMPLE_OPTION(presence,OPAL_HAS_PRESENCE, [presence support])
 
 dnl MSWIN_DISPLAY  msrp,MSRP capability
+
+dnl MSWIN_DEFAULT msrp,Disabled
 dnl MSWIN_DEFINE   msrp,OPAL_HAS_MSRP
 OPAL_SIMPLE_OPTION(msrp,OPAL_HAS_MSRP, [MSRP support], [OPAL_HAS_PRESENCE])
 
 dnl MSWIN_DISPLAY  sipim,SIPIM capability
+
+dnl MSWIN_DEFAULT sipim,Enabled
 dnl MSWIN_DEFINE   sipim,OPAL_HAS_SIPIM
 OPAL_SIMPLE_OPTION(sipim,OPAL_HAS_SIPIM, [SIPIM session support], [OPAL_HAS_PRESENCE], [OPAL_SIP])
 
 dnl MSWIN_DISPLAY  rfc4103,RFC4103 capability
+
+dnl MSWIN_DEFAULT rfc4103,Enabled
 dnl MSWIN_DEFINE   rfc4103,OPAL_HAS_RFC4103
 OPAL_SIMPLE_OPTION(rfc4103,OPAL_HAS_RFC4103, [RFC4103 support], [OPAL_HAS_PRESENCE])
 
 dnl MSWIN_DISPLAY  statistics,Statistics gathering support
+
+dnl MSWIN_DEFAULT statistics,Enabled
 dnl MSWIN_DEFINE   statistics,OPAL_STATISTICS
 OPAL_SIMPLE_OPTION(statistics,OPAL_STATISTICS, [statistics gathering support])
 
 dnl MSWIN_DISPLAY    fax,T.38 FAX protocol
+
+dnl MSWIN_DEFAULT fax,Disabled
 dnl MSWIN_IF_FEATURE fax,t38
 dnl MSWIN_DEFINE     fax,OPAL_FAX
 OPAL_SIMPLE_OPTION(  fax,OPAL_FAX, [T.38 FAX protocol support],[OPAL_T38_CAPABILITY],[OPAL_PTLIB_ASN],[OPAL_STATISTICS])
 
 dnl MSWIN_DISPLAY    h450,H.450
+
+dnl MSWIN_DEFAULT h450,Enabled
 dnl MSWIN_IF_FEATURE h450,h323
 dnl MSWIN_DEFINE     h450,OPAL_H450
 OPAL_SIMPLE_OPTION(  h450,OPAL_H450, [H.450], [OPAL_H323])
 
 dnl MSWIN_DISPLAY    h460,H.460
+
+dnl MSWIN_DEFAULT h460,Enabled
 dnl MSWIN_IF_FEATURE h460,h323
 dnl MSWIN_DEFINE     h460,OPAL_H460
 OPAL_SIMPLE_OPTION(  h460,OPAL_H460, [H.460], [OPAL_H323])
 
 dnl MSWIN_DISPLAY    h460nat,H.460 NAT traversal
+
+dnl MSWIN_DEFAULT h460nat,Enabled
 dnl MSWIN_IF_FEATURE h460nat,h323
 dnl MSWIN_DEFINE     h460nat,OPAL_H460_NAT
 OPAL_SIMPLE_OPTION(  h460nat,OPAL_H460_NAT, [H.460.24], [OPAL_H323])
 
 dnl MSWIN_DISPLAY    h239,H.239
+
+dnl MSWIN_DEFAULT h239,Enabled
 dnl MSWIN_IF_FEATURE h239,h323
 dnl MSWIN_DEFINE     h239,OPAL_H239
 OPAL_SIMPLE_OPTION(  h239,OPAL_H239, [H.239], [OPAL_H323])
 
 dnl MSWIN_DISPLAY    h2356,H.235.6
+
+dnl MSWIN_DEFAULT h2356,Disabled
 dnl MSWIN_IF_FEATURE h2356,h323
 dnl MSWIN_DEFINE     h2356,OPAL_H235_6
 OPAL_SIMPLE_OPTION(  h2356,OPAL_H235_6, [H.235.6], [OPAL_H323])
 
 dnl MSWIN_DISPLAY    h2358,H.235.8
+
+dnl MSWIN_DEFAULT h2358,Disabled
 dnl MSWIN_IF_FEATURE h2358,h323
 dnl MSWIN_DEFINE     h2358,OPAL_H235_8
 OPAL_SIMPLE_OPTION(  h2358,OPAL_H235_8, [H.235.8], [OPAL_H323], [OPAL_PTLIB_SSL])
 
 dnl MSWIN_DISPLAY    h501,H.501
+
+dnl MSWIN_DEFAULT h501,Enabled
 dnl MSWIN_IF_FEATURE h501,h323
 dnl MSWIN_DEFINE     h501,OPAL_H501
 OPAL_SIMPLE_OPTION(  h501,OPAL_H501, [H.501], [OPAL_H323])
@@ -429,6 +482,8 @@ dnl _MSWIN_DEFINE     t120,OPAL_T120DATA
 OPAL_SIMPLE_OPTION(   t120,OPAL_T120DATA, [T.120], [OPAL_H323])
 
 dnl MSWIN_DISPLAY  lid,Line Interface Device
+
+dnl MSWIN_DEFAULT lid,Disabled
 dnl MSWIN_DEFINE   lid,OPAL_LID
 OPAL_SIMPLE_OPTION(lid,OPAL_LID, [LID support])
 
@@ -454,10 +509,15 @@ fi
 
 
 dnl MSWIN_DISPLAY  ivr,IVR support
+
+
+dnl MSWIN_DEFAULT ivr,Disabled
 dnl MSWIN_DEFINE   ivr,OPAL_IVR
 OPAL_SIMPLE_OPTION(ivr,OPAL_IVR, [IVR support], [OPAL_PTLIB_EXPAT], [OPAL_PTLIB_VXML])
 
 dnl MSWIN_DISPLAY  rfc4175,RFC4175 Raw Video support
+
+dnl MSWIN_DEFAULT rfc4175,Disabled
 dnl MSWIN_DEFINE   rfc4175,OPAL_RFC4175
 OPAL_SIMPLE_OPTION(rfc4175,OPAL_RFC4175, [RFC4175 support], [OPAL_VIDEO])
 
@@ -470,6 +530,8 @@ dnl MSWIN_CHECK_DIR  rfc2435,%ProgramW6432%\GnuWin32\include\
 OPAL_SIMPLE_OPTION(rfc2435,OPAL_RFC2435, [RFC2435 support (experimental)], [OPAL_VIDEO])
 
 dnl MSWIN_DISPLAY  g711plc,Packet Loss Concealment for G.711
+
+dnl MSWIN_DEFAULT g711plc,Enabled
 dnl MSWIN_DEFINE   g711plc,OPAL_G711PLC
 OPAL_SIMPLE_OPTION(g711plc,OPAL_G711PLC, [Packet Loss Concealment for G.711])
 
@@ -479,22 +541,32 @@ dnl MSWIN_DEFINE   rtpfec,OPAL_RTP_FEC
 OPAL_SIMPLE_OPTION(rtpfec,OPAL_RTP_FEC, [RTP Forward Error Correction (incomplete and experimental!)])
 
 dnl MSWIN_DISPLAY  rtcpxr,RTCP Extended Reports support
+
+dnl MSWIN_DEFAULT rtcpxr,Enabled
 dnl MSWIN_DEFINE   rtcpxr,OPAL_RTCP_XR
 OPAL_SIMPLE_OPTION(rtcpxr,OPAL_RTCP_XR, [RTCP Extended Reports support])
 
 dnl MSWIN_DISPLAY  mixer,Media mixing
+
+dnl MSWIN_DEFAULT mixer,Enabled
 dnl MSWIN_DEFINE   mixer,OPAL_HAS_MIXER
 OPAL_SIMPLE_OPTION(mixer,OPAL_HAS_MIXER, [media mixing support])
 
 dnl MSWIN_DISPLAY  pcss,PC Sound System Endpoint
+
+dnl MSWIN_DEFAULT pcss,Enabled
 dnl MSWIN_DEFINE   pcss,OPAL_HAS_PCSS
 OPAL_SIMPLE_OPTION(pcss,OPAL_HAS_PCSS, [PC sound system support])
 
 dnl MSWIN_DISPLAY  script,Script language interface
+
+dnl MSWIN_DEFAULT script,Enabled
 dnl MSWIN_DEFINE   script,OPAL_SCRIPT
 OPAL_SIMPLE_OPTION(script,OPAL_SCRIPT, [script language support])
 
 dnl MSWIN_DISPLAY  perfhack,Performance checking hack
+
+dnl MSWIN_DEFAULT perfhack,Disabled
 dnl MSWIN_DEFINE   perfhack,OPAL_PERFORMANCE_CHECK_HACK
 OPAL_SIMPLE_OPTION(perfhack,OPAL_PERFORMANCE_CHECK_HACK, [Performance checking hack])
 
