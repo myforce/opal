@@ -238,7 +238,6 @@ PSoundChannel * OpalPCSSEndPoint::CreateSoundChannel(const OpalPCSSConnection & 
 
   if (connection.GetCall().IsOnHold())
     return CreateSoundChannel(connection, mediaFormat, connection.GetSoundChannelOnHoldDevice(), isSource);
-  soundChannel->SetErrorThreadId(manager.GetThreadId());
 
   if (connection.GetPhase() < OpalConnection::AlertingPhase && !connection.GetSoundChannelOnRingDevice().IsEmpty())
     return CreateSoundChannel(connection, mediaFormat, connection.GetSoundChannelOnRingDevice(), isSource);
@@ -269,6 +268,8 @@ PSoundChannel * OpalPCSSEndPoint::CreateSoundChannel(const OpalPCSSConnection & 
               << " sound channel \"" << params.m_device
               << "\" for " << (isSource ? "record" : "play") << "ing at "
               << params.m_sampleRate/1000 << '.' << (params.m_sampleRate%1000)/100 << " kHz.");
+
+  soundChannel->SetErrorThreadId(manager.GetThreadId());
 
   return soundChannel;
 }
