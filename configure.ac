@@ -249,7 +249,7 @@ MY_MODULE_OPTION(
 
 dnl MSWIN_DISPLAY  aec,Accoustic Echo Cancellation
 
-dnl MSWIN_DEFAULT aec,Disabled
+dnl MSWIN_DEFAULT aec,Enabled
 dnl MSWIN_DEFINE   aec,OPAL_AEC
 OPAL_SIMPLE_OPTION(aec,OPAL_AEC, [accoustic echo cancellation support], [SPEEXDSP_USABLE])
 
@@ -343,7 +343,7 @@ OPAL_SIMPLE_OPTION(video,OPAL_VIDEO, [video support], [OPAL_PTLIB_VIDEO])
 
 dnl MSWIN_DISPLAY  sdp,SDP support
 
-dnl MSWIN_DEFAULT sdp,Disabled
+dnl MSWIN_DEFAULT sdp,Enabled
 dnl MSWIN_DEFINE   sdp,OPAL_SDP
 OPAL_SIMPLE_OPTION(sdp,OPAL_SDP, [SDP protocol support])
 
