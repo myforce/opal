@@ -2610,6 +2610,61 @@ OpalRTPSession::SendReceiveStatus OpalRTPSession::WriteControl(RTP_ControlFrame 
   return e_AbortTransport;
 }
 
+/** Get extended metrics */
+#if OPAL_RTCP_XR
+int OpalRTPSession::GetRFactor(RTP_SyncSourceId ssrc = 0) const
+{
+	int nToReturn = -1;
+	SyncSource * pSource = NULL;
+	if (GetSyncSource(ssrc, e_Receiver, pSource))
+	{
+		RTCP_XR_Metrics * pMetrics = pSource->GetExtendedMetrics();
+		if (pMetrics)
+			nToReturn = pMetrics->GetRFactor();
+	}	
+	return nToReturn;
+}
+
+int OpalRTPSession::GetMOS_CQ(RTP_SyncSourceId ssrc = 0) const
+{
+	int nToReturn = -1;
+	SyncSource * pSource = NULL;
+	if (GetSyncSource(ssrc, e_Receiver, pSource))
+	{
+
+		RTCP_XR_Metrics * pMetrics = pSource->GetExtendedMetrics();
+		if (pMetrics)
+			nToReturn = pMetrics->GetMOS_CQ();
+	}
+	return nToReturn;
+}
+
+int OpalRTPSession::GetMOS_LQ(RTP_SyncSourceId ssrc = 0) const
+{
+	int nToReturn = -1;
+	SyncSource * pSource = NULL;
+	if (GetSyncSource(ssrc, e_Receiver, pSource))
+	{
+		RTCP_XR_Metrics * pMetrics = pSource->GetExtendedMetrics();
+		if (pMetrics)
+			nToReturn = pMetrics->GetMOS_LQ();
+	}
+	return nToReturn;
+}
+
+int OpalRTPSession::GetBurstDensity(RTP_SyncSourceId ssrc = 0) const
+{
+	int nToReturn = -1;
+	SyncSource * pSource = NULL;
+	if (GetSyncSource(ssrc, e_Receiver, pSource))
+	{
+		RTCP_XR_Metrics * pMetrics = pSource->GetExtendedMetrics();
+		if (pMetrics)
+			nToReturn = pMetrics->GetBurstDensity();
+	}
+	return nToReturn;
+}
+#endif
 
 void OpalRTPSession::CheckMediaFailed(SubChannels subchannel)
 {
@@ -2621,6 +2676,7 @@ void OpalRTPSession::CheckMediaFailed(SubChannels subchannel)
     m_manager.QueueDecoupledEvent(new PSafeWorkNoArg<OpalRTPSession, bool>(this, &OpalRTPSession::Close));
   }
 }
+
 
 
 /////////////////////////////////////////////////////////////////////////////
