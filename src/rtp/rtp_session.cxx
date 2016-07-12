@@ -2612,7 +2612,7 @@ OpalRTPSession::SendReceiveStatus OpalRTPSession::WriteControl(RTP_ControlFrame 
 
 /** Get extended metrics */
 #if OPAL_RTCP_XR
-int OpalRTPSession::GetRFactor(RTP_SyncSourceId ssrc = 0) const
+int OpalRTPSession::GetRFactor(RTP_SyncSourceId ssrc/* = 0*/) const
 {
 	int nToReturn = -1;
 	SyncSource * pSource = NULL;
@@ -2625,7 +2625,7 @@ int OpalRTPSession::GetRFactor(RTP_SyncSourceId ssrc = 0) const
 	return nToReturn;
 }
 
-int OpalRTPSession::GetMOS_CQ(RTP_SyncSourceId ssrc = 0) const
+int OpalRTPSession::GetMOS_CQ(RTP_SyncSourceId ssrc/* = 0*/) const
 {
 	int nToReturn = -1;
 	SyncSource * pSource = NULL;
@@ -2639,7 +2639,7 @@ int OpalRTPSession::GetMOS_CQ(RTP_SyncSourceId ssrc = 0) const
 	return nToReturn;
 }
 
-int OpalRTPSession::GetMOS_LQ(RTP_SyncSourceId ssrc = 0) const
+int OpalRTPSession::GetMOS_LQ(RTP_SyncSourceId ssrc/* = 0*/) const
 {
 	int nToReturn = -1;
 	SyncSource * pSource = NULL;
@@ -2652,7 +2652,7 @@ int OpalRTPSession::GetMOS_LQ(RTP_SyncSourceId ssrc = 0) const
 	return nToReturn;
 }
 
-int OpalRTPSession::GetBurstDensity(RTP_SyncSourceId ssrc = 0) const
+int OpalRTPSession::GetBurstDensity(RTP_SyncSourceId ssrc/* = 0*/) const
 {
 	int nToReturn = -1;
 	SyncSource * pSource = NULL;
