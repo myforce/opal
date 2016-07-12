@@ -248,8 +248,6 @@ class OpalRTPSession : public OpalMediaSession
       RTP_SyncSourceId src,
       const RTP_MetricsReport & report
     );
-
-	RTCP_XR_Metrics * GetExtendedMetrics() const { return m_metrics; }
 #endif // OPAL_RTCP_XR
   //@}
 
@@ -750,6 +748,11 @@ class OpalRTPSession : public OpalMediaSession
       PTRACE_THROTTLE(m_throttleRxUnknownFEC,3,10000);
 
       P_REMOVE_VIRTUAL(SendReceiveStatus, OnSendData(RTP_DataFrame &, bool), e_AbortTransport);
+
+#if OPAL_RTCP_XR
+public:
+	  RTCP_XR_Metrics * GetExtendedMetrics() const { return m_metrics; }
+#endif
     };
 
     typedef std::map<RTP_SyncSourceId, SyncSource *> SyncSourceMap;
