@@ -248,6 +248,8 @@ class OpalRTPSession : public OpalMediaSession
       RTP_SyncSourceId src,
       const RTP_MetricsReport & report
     );
+
+	RTCP_XR_Metrics * GetExtendedMetrics() const { return m_metrics; }
 #endif // OPAL_RTCP_XR
   //@}
 
