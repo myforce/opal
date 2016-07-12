@@ -540,6 +540,15 @@ class OpalRTPSession : public OpalMediaSession
        This is calculated according to the RFC 3550 algorithm.
       */
     int GetRoundTripTime() const { return m_roundTripTime; }
+
+	/** Get extended metrics */
+#if OPAL_RTCP_XR
+	int GetRFactor(RTP_SyncSourceId ssrc = 0) const;
+	int GetMOS_CQ(RTP_SyncSourceId ssrc = 0) const;
+	int GetMOS_LQ(RTP_SyncSourceId ssrc = 0) const;
+	int GetBurstDensity(RTP_SyncSourceId ssrc = 0) const;
+#endif
+
   //@}
 
     /// Send BYE command
