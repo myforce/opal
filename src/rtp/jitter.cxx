@@ -394,7 +394,7 @@ void OpalAudioJitterBuffer::InternalReset()
 }
 
 
-PBoolean OpalAudioJitterBuffer::WriteData(const RTP_DataFrame & frame, PTimeInterval PTRACE_PARAM(tick))
+PBoolean OpalAudioJitterBuffer::WriteData(const RTP_DataFrame & frame, const PTimeInterval& PTRACE_PARAM(tick))
 {
   if (m_closed)
     return false;
@@ -561,7 +561,7 @@ bool OpalAudioJitterBuffer::AdjustCurrentJitterDelay(int delta)
 }
 
 
-PBoolean OpalAudioJitterBuffer::ReadData(RTP_DataFrame & frame, const PTimeInterval & PTRACE_PARAM(, PTimeInterval tick))
+PBoolean OpalAudioJitterBuffer::ReadData(RTP_DataFrame & frame, const PTimeInterval & PTRACE_PARAM(, const PTimeInterval& tick))
 {
   // Default response is an empty frame, ie silence with possible comfort noise
   frame.SetPayloadType(RTP_DataFrame::CN);
@@ -585,10 +585,11 @@ PBoolean OpalAudioJitterBuffer::ReadData(RTP_DataFrame & frame, const PTimeInter
     return false;
 
 #if PTRACING
+  PTimeInterval localTick = tick;
   if (tick == PMaxTimeInterval)
-      tick = PTimer::Tick();
-  PTimeInterval removalDelta = tick - m_lastRemoveTick;
-  m_lastRemoveTick = tick;
+	  localTick = PTimer::Tick();
+  PTimeInterval removalDelta = localTick - m_lastRemoveTick;
+  m_lastRemoveTick = localTick;
 #endif
 
   // Now we get the timestamp the caller wants
@@ -804,13 +805,13 @@ void OpalNonJitterBuffer::Restart()
 }
 
 
-bool OpalNonJitterBuffer::WriteData(const RTP_DataFrame & frame, PTimeInterval)
+bool OpalNonJitterBuffer::WriteData(const RTP_DataFrame & frame, const PTimeInterval&)
 {
   return m_queue.Enqueue(frame);
 }
 
 
-bool OpalNonJitterBuffer::ReadData(RTP_DataFrame & frame, const PTimeInterval & timeout PTRACE_PARAM(, PTimeInterval))
+bool OpalNonJitterBuffer::ReadData(RTP_DataFrame & frame, const PTimeInterval & timeout PTRACE_PARAM(, const PTimeInterval&))
 {
   if (!m_queue.Dequeue(frame, timeout))
       frame.SetPayloadSize(0);
