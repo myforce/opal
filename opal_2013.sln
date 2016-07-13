@@ -1,5 +1,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2013 for Windows Desktop
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PTLib Static", "..\ptlib\src\ptlib\msos\Console_2013.vcxproj", "{D11E1C9D-406C-4D7C-8F37-913C0BFD9E0D}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PTLib DLL", "..\ptlib\src\ptlib\msos\PTLib_2013.vcxproj", "{85F4F26A-1A5D-4685-A48A-448102C5C5BC}"
@@ -8,9 +10,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OPAL Static", "src\win32\op
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OPAL DLL", "src\win32\opal_dll_2013.vcxproj", "{B2830E08-B1F1-492F-8849-F3D8461E450F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Console Application", "samples\console\Console_Static_2013.vcxproj", "{ACD44F8A-C686-4E99-8867-EB4BB516B111}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Console Application - Static", "samples\console\Console_Static_2013.vcxproj", "{ACD44F8A-C686-4E99-8867-EB4BB516B111}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Console Application", "samples\console\Console_DLL_2013.vcxproj", "{48F898BB-A51C-4B2E-BC39-D78449C1C5F0}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Console Application - DLL", "samples\console\Console_DLL_2013.vcxproj", "{48F898BB-A51C-4B2E-BC39-D78449C1C5F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
