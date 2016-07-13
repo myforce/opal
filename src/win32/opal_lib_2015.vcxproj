@@ -43,7 +43,7 @@
     <ProjectGuid>{11FB12B5-B5EB-4DFF-BD6F-2A0BDF187C22}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>OPALStatic</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>6.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -123,13 +123,13 @@
     <OutDir>..\..\Lib2015\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IntDir>$(OutDir)intermediate</IntDir>
+    <IntDir>$(OutDir)intermediate\</IntDir>
     <TargetName>opalsd</TargetName>
     <IncludePath>$(ProjectDir)..\..\lib\$(Platform)\include;$(ProjectDir)..\..\include;$(ProjectDir)..\..\..\ptlib\lib\$(Platform)\include;$(ProjectDir)..\..\..\ptlib\include;$(PTLIBDIR)..\..\..\ptlib\lib\$(Platform)\include;$(PTLIBDIR)..\..\..\ptlib\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)..\..\lib;$(ProjectDir)..\..\..\ptlib\lib;$(PTLIBDIR)..\..\..\ptlib\lib;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IntDir>$(OutDir)intermediate</IntDir>
+    <IntDir>$(OutDir)intermediate\</IntDir>
     <TargetName>opal64sd</TargetName>
     <IncludePath>$(ProjectDir)..\..\lib\$(Platform)\include;$(ProjectDir)..\..\include;$(ProjectDir)..\..\..\ptlib\lib\$(Platform)\include;$(ProjectDir)..\..\..\ptlib\include;$(PTLIBDIR)..\..\..\ptlib\lib\$(Platform)\include;$(PTLIBDIR)..\..\..\ptlib\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)..\..\lib;$(ProjectDir)..\..\..\ptlib\lib;$(PTLIBDIR)..\..\..\ptlib\lib;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
@@ -147,46 +147,46 @@
     <OutDir>..\..\Lib2015\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IntDir>$(OutDir)intermediate</IntDir>
+    <IntDir>$(OutDir)intermediate\</IntDir>
     <TargetName>opals</TargetName>
     <IncludePath>$(ProjectDir)..\..\lib\$(Platform)\include;$(ProjectDir)..\..\include;$(ProjectDir)..\..\..\ptlib\lib\$(Platform)\include;$(ProjectDir)..\..\..\ptlib\include;$(PTLIBDIR)..\..\..\ptlib\lib\$(Platform)\include;$(PTLIBDIR)..\..\..\ptlib\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)..\..\lib;$(ProjectDir)..\..\..\ptlib\lib;$(PTLIBDIR)..\..\..\ptlib\lib;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IntDir>$(OutDir)intermediate</IntDir>
+    <IntDir>$(OutDir)intermediate\</IntDir>
     <TargetName>opal64s</TargetName>
     <IncludePath>$(ProjectDir)..\..\lib\$(Platform)\include;$(ProjectDir)..\..\include;$(ProjectDir)..\..\..\ptlib\lib\$(Platform)\include;$(ProjectDir)..\..\..\ptlib\include;$(PTLIBDIR)..\..\..\ptlib\lib\$(Platform)\include;$(PTLIBDIR)..\..\..\ptlib\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)..\..\lib;$(ProjectDir)..\..\..\ptlib\lib;$(PTLIBDIR)..\..\..\ptlib\lib;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='No Trace|Win32'">
-    <IntDir>$(OutDir)intermediate</IntDir>
+    <IntDir>$(OutDir)intermediate\</IntDir>
     <TargetName>opalsn</TargetName>
     <IncludePath>$(ProjectDir)..\..\lib\$(Platform)\include;$(ProjectDir)..\..\include;$(ProjectDir)..\..\..\ptlib\lib\$(Platform)\include;$(ProjectDir)..\..\..\ptlib\include;$(PTLIBDIR)..\..\..\ptlib\lib\$(Platform)\include;$(PTLIBDIR)..\..\..\ptlib\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)..\..\lib;$(ProjectDir)..\..\..\ptlib\lib;$(PTLIBDIR)..\..\..\ptlib\lib;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='No Trace|x64'">
-    <IntDir>$(OutDir)intermediate</IntDir>
+    <IntDir>$(OutDir)intermediate\</IntDir>
     <TargetName>opal64sn</TargetName>
     <IncludePath>$(ProjectDir)..\..\lib\$(Platform)\include;$(ProjectDir)..\..\include;$(ProjectDir)..\..\..\ptlib\lib\$(Platform)\include;$(ProjectDir)..\..\..\ptlib\include;$(PTLIBDIR)..\..\..\ptlib\lib\$(Platform)\include;$(PTLIBDIR)..\..\..\ptlib\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)..\..\lib;$(ProjectDir)..\..\..\ptlib\lib;$(PTLIBDIR)..\..\..\ptlib\lib;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android'">
     <OutDir>..\..\Lib2015\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(OutDir)intermediate</IntDir>
+    <IntDir>$(OutDir)intermediate\</IntDir>
     <TargetName>libopalsd</TargetName>
     <IncludePath>..\..\lib\$(Platform)\include;..\..\include;..\..\..\ptlib\lib\$(Platform)\include;..\..\..\ptlib\include;$(AndroidIncludeDir);$(AndroidStlIncludeDir)</IncludePath>
     <LibraryPath>..\..\lib\$(Platform);..\..\..\ptlib\lib\$(Platform);$(AndroidLibDir);$(AndroidStlLibPath);</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='No Trace|Android'">
     <OutDir>..\..\Lib2015\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(OutDir)intermediate</IntDir>
+    <IntDir>$(OutDir)intermediate\</IntDir>
     <TargetName>libopalsn</TargetName>
     <IncludePath>..\..\lib\$(Platform)\include;..\..\include;..\..\..\ptlib\lib\$(Platform)\include;..\..\..\ptlib\include;$(AndroidIncludeDir);$(AndroidStlIncludeDir)</IncludePath>
     <LibraryPath>..\..\lib\$(Platform);..\..\..\ptlib\lib\$(Platform);$(AndroidLibDir);$(AndroidStlLibPath);</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Android'">
     <OutDir>..\..\Lib2015\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(OutDir)intermediate</IntDir>
+    <IntDir>$(OutDir)intermediate\</IntDir>
     <TargetName>libopals</TargetName>
     <IncludePath>..\..\lib\$(Platform)\include;..\..\include;..\..\..\ptlib\lib\$(Platform)\include;..\..\..\ptlib\include;$(AndroidIncludeDir);$(AndroidStlIncludeDir)</IncludePath>
     <LibraryPath>..\..\lib\$(Platform);..\..\..\ptlib\lib\$(Platform);$(AndroidLibDir);$(AndroidStlLibPath);</LibraryPath>
