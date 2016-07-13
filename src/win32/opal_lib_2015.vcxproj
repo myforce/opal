@@ -43,7 +43,7 @@
     <ProjectGuid>{11FB12B5-B5EB-4DFF-BD6F-2A0BDF187C22}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>OPALStatic</RootNamespace>
-    <WindowsTargetPlatformVersion>6.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
