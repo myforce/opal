@@ -472,7 +472,7 @@ class H4502Handler : public H450xHandler
 
     /** Start the Call Transfer Timer using the specified time interval.
      */
-    void StartctTimer(const PTimeInterval value) { ctTimer = value; }
+    void StartctTimer(const PTimeInterval& value) { ctTimer = value; }
 
     /** Stop the Call Transfer Timer
      */
@@ -894,7 +894,7 @@ class H45011Handler : public H450xHandler
 
     /** Start the Call Intrusion Timer using the specified time interval.
      */
-    void StartciTimer(const PTimeInterval value) { ciTimer = value; }
+    void StartciTimer(const PTimeInterval& value) { ciTimer = value; }
 
     /** Stop the Call Intrusion Timer
      */
