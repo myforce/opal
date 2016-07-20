@@ -885,7 +885,7 @@ void OpalCall::StopRecording()
 bool OpalCall::OnStartRecording(const PString & streamId, const OpalMediaFormat & format)
 {
   if (m_recordManager == NULL)
-    return;
+    return false;
 
   PSafeLockReadOnly lock(*this);
   return m_recordManager != NULL && m_recordManager->OpenStream(streamId, format);
