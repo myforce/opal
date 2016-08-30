@@ -159,7 +159,7 @@ PString OpalGetVersion()
 #define BetaCode    "beta"
 #define ReleaseCode "."
 
-  return psprintf("%u.%u%s%u (svn:%u)", MAJOR_VERSION, MINOR_VERSION, BUILD_TYPE, BUILD_NUMBER, SVN_REVISION);
+  return psprintf("%u.%u%s%u (git:%s)", MAJOR_VERSION, MINOR_VERSION, BUILD_TYPE, BUILD_NUMBER, GIT_COMMIT);
 }
 
 
