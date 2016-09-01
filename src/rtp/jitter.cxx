@@ -392,7 +392,7 @@ void OpalAudioJitterBuffer::InternalReset()
 }
 
 
-PBoolean OpalAudioJitterBuffer::WriteData(const RTP_DataFrame & frame, PTimeInterval tick)
+PBoolean OpalAudioJitterBuffer::WriteData(const RTP_DataFrame & frame, const PTimeInterval& tick)
 {
   if (m_closed)
     return false;
