@@ -179,20 +179,7 @@ void OpalMediaPatch::Start()
 
 void OpalMediaPatch::StopThread()
 {
-  m_patchThreadMutex.Wait();
-  PThread * thread = m_patchThread;
-  m_patchThread = NULL;
-  m_patchThreadMutex.Signal();
-
-  if (thread == NULL)
-    return;
-
-  if (!thread->IsSuspended()) {
-    PTRACE(4, "Waiting for media patch thread to stop " << *this);
-    PAssert(thread->WaitForTermination(10000), "Media patch thread not terminated.");
-  }
-
-  delete thread;
+  PThread::WaitAndDelete(m_patchThread, 10000, &m_patchThreadMutex);
 }
 
 
@@ -308,10 +295,10 @@ bool OpalMediaPatch::Sink::CreateTranscoders()
     m_stream->SetDataSize(packetSize, packetTime);
     m_stream->InternalUpdateMediaFormat(m_stream->GetMediaFormat());
     m_patch.m_source.InternalUpdateMediaFormat(m_patch.m_source.GetMediaFormat());
-#if OPAL_VIDEO
+#if OPAL_VIDEO && OPAL_STATISTICS
     if (sourceFormat.GetMediaType() == OpalMediaType::Video())
       m_videoFormat = sourceFormat;
-#endif // OPAL_VIDEO
+#endif // OPAL_VIDEO && OPAL_STATISTICS
     PTRACE(3, "Changed to direct media on " << m_patch);
     return true;
   }
@@ -961,7 +948,7 @@ bool OpalMediaPatch::Sink::ExecuteCommand(const OpalMediaCommand & command, bool
   if (m_primaryCodec != NULL)
     atLeastOne = m_primaryCodec->ExecuteCommand(command) || atLeastOne;
 
-#if OPAL_VIDEO
+#if OPAL_VIDEO && OPAL_STATISTICS
   if (atLeastOne) {
     const OpalVideoUpdatePicture * update = dynamic_cast<const OpalVideoUpdatePicture *>(&command);
     if (update != NULL) {
@@ -1042,18 +1029,20 @@ bool OpalMediaPatch::Sink::WriteFrame(RTP_DataFrame & sourceFrame, bool bypassin
     }
   }
 
+#if OPAL_STATISTICS
   OpalVideoFormat::VideoFrameType frameType;
   if (m_videoFormat.IsValid())
     frameType = m_videoFormat.GetVideoFrameType(sourceFrame.GetPayloadPtr(), sourceFrame.GetPayloadSize(), m_keyFrameDetectContext);
   else
     frameType = OpalVideoFormat::e_UnknownFrameType;
+#endif // OPAL_STATISTICS
 #endif // OPAL_VIDEO
 
   if (bypassing || m_primaryCodec == NULL) {
     if (!m_stream->WritePacket(sourceFrame))
       return false;
 
-#if OPAL_VIDEO
+#if OPAL_VIDEO && OPAL_STATISTICS
     RTP_SyncSourceId ssrc;
     switch (frameType) {
     case OpalVideoFormat::e_IntraFrame :
@@ -1082,7 +1071,7 @@ bool OpalMediaPatch::Sink::WriteFrame(RTP_DataFrame & sourceFrame, bool bypassin
       default :
         break;
     }
-#endif // OPAL_VIDEO
+#endif // OPAL_VIDEO && OPAL_STATISTICS
 
     PTRACE_IF(6, bypassing, "Bypassed packet " << setw(1) << sourceFrame);
     return true;

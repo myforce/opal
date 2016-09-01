@@ -332,7 +332,7 @@ PString OpalMediaStatistics::GetCPU() const
 }
 
 
-static PString InternalTimeDiff(PTime lastUpdate, const PTime & previousUpdate)
+static PString InternalTimeDiff(const PTime & lastUpdate, const PTime & previousUpdate)
 {
   if (previousUpdate.IsValid())
     return ((lastUpdate.IsValid() ? lastUpdate : PTime()) - previousUpdate).AsString();
@@ -512,6 +512,7 @@ OpalMediaTransport::OpalMediaTransport(const PString & name)
   , m_packetSize(2048)
   , m_mediaTimeout(0, 0, 5)       // Nothing received for 5 minutes
   , m_maxNoTransmitTime(0, 10)    // Sending data for 10 seconds, ICMP says still not there
+  , m_opened(false)
   , m_started(false)
 {
 }
@@ -525,15 +526,7 @@ void OpalMediaTransport::PrintOn(ostream & strm) const
 
 bool OpalMediaTransport::IsOpen() const
 {
-  PSafeLockReadOnly lock(*this);
-  if (!lock.IsLocked() || m_subchannels.empty())
-    return false;
-
-  for (vector<Transport>::const_iterator it = m_subchannels.begin(); it != m_subchannels.end(); ++it) {
-    if (it->m_channel == NULL || !it->m_channel->IsOpen())
-      return false;
-  }
-  return true;
+  return m_opened;
 }
 
 
@@ -745,8 +738,16 @@ void OpalMediaTransport::InternalClose()
   for (vector<Transport>::iterator it = m_subchannels.begin(); it != m_subchannels.end(); ++it) {
     if (it->m_channel != NULL) {
       PChannel * base = it->m_channel->GetBaseReadChannel();
-      if (base != NULL)
+      if (base != NULL) {
+        PTRACE(4, *this << it->m_subchannel << " closing.");
         base->Close();
+      }
+      else {   
+        PTRACE(3, *this << it->m_subchannel << " already closed.");
+      }
+    }
+    else {
+      PTRACE(3, *this << it->m_subchannel << " not created.");
     }
   }
 
@@ -802,15 +803,14 @@ void OpalMediaTransport::Start()
 
 void OpalMediaTransport::InternalStop()
 {
-  PTRACE(4, *this << "stopping " << m_subchannels.size() << "subchannels.");
+  if (m_subchannels.empty())
+    return;
+
+  PTRACE(4, *this << "stopping " << m_subchannels.size() << " subchannels.");
   InternalClose();
 
-  for (vector<Transport>::iterator it = m_subchannels.begin(); it != m_subchannels.end(); ++it) {
-    if (it->m_thread != NULL) {
-      PAssert(it->m_thread->WaitForTermination(10000), "RTP thread failed to terminate");
-      delete it->m_thread;
-    }
-  }
+  for (vector<Transport>::iterator it = m_subchannels.begin(); it != m_subchannels.end(); ++it)
+    PThread::WaitAndDelete(it->m_thread);
 
   LockReadWrite();
   for (vector<Transport>::iterator it = m_subchannels.begin(); it != m_subchannels.end(); ++it)
@@ -834,7 +834,7 @@ OpalTCPMediaTransport::OpalTCPMediaTransport(const PString & name)
 
 bool OpalTCPMediaTransport::Open(OpalMediaSession &, PINDEX, const PString & localInterface, const OpalTransportAddress &)
 {
-  return dynamic_cast<PTCPSocket &>(*m_subchannels[0].m_channel).Listen(PIPAddress(localInterface));
+  return m_opened = dynamic_cast<PTCPSocket &>(*m_subchannels[0].m_channel).Listen(PIPAddress(localInterface));
 }
 
 
@@ -1151,6 +1151,7 @@ bool OpalUDPMediaTransport::Open(OpalMediaSession & session,
   }
   m_mediaTimer = m_mediaTimeout;
 
+  m_opened = true;
   return true;
 }
 

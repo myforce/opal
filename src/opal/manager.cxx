@@ -159,7 +159,7 @@ PString OpalGetVersion()
 #define BetaCode    "beta"
 #define ReleaseCode "."
 
-  return psprintf("%u.%u%s%u (svn:%u)", MAJOR_VERSION, MINOR_VERSION, BUILD_TYPE, BUILD_NUMBER, SVN_REVISION);
+  return psprintf("%u.%u%s%u (git:%s)", MAJOR_VERSION, MINOR_VERSION, BUILD_TYPE, BUILD_NUMBER, GIT_COMMIT);
 }
 
 
@@ -412,11 +412,8 @@ OpalManager::~OpalManager()
 #endif
 
   // Shut down the cleaner thread
-  if (m_garbageCollector != NULL) {
-    m_garbageCollectExit.Signal();
-    m_garbageCollector->WaitForTermination();
-    delete m_garbageCollector;
-  }
+  m_garbageCollectExit.Signal();
+  PThread::WaitAndDelete(m_garbageCollector);
 
   // Clean up any calls that the cleaner thread missed on the way out
   GarbageCollection();
