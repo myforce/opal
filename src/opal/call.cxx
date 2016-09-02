@@ -888,6 +888,7 @@ bool OpalCall::OnStartRecording(const PString & streamId, const OpalMediaFormat 
     return false;
 
   PSafeLockReadOnly lock(*this);
+  return lock.IsLocked() && m_recordManager != NULL && m_recordManager->OpenStream(streamId, format);
 }
 
 
@@ -897,7 +898,8 @@ void OpalCall::OnStopRecording(const PString & streamId)
 	return;
 
   PSafeLockReadOnly lock(*this);
-    m_recordManager->CloseStream(streamId);
+  if (m_recordManager != NULL)
+	m_recordManager->CloseStream(streamId);
 }
 
 
@@ -907,7 +909,8 @@ void OpalCall::OnRecordAudio(const PString & streamId, const RTP_DataFrame & fra
 		return;
 
   PSafeLockReadOnly lock(*this);
-    m_recordManager->CloseStream(streamId);
+  if (lock.IsLocked() && m_recordManager != NULL && !m_recordManager->WriteAudio(streamId, frame));
+	m_recordManager->CloseStream(streamId);
 }
 
 
