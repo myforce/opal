@@ -2048,7 +2048,13 @@ bool SDPRTPAVPMediaDescription::ToSession(OpalMediaSession * session) const
           PTRACE(4, "Session " << session->GetSessionID() << ", removed receiver SSRC " << RTP_TRACE_SRC(ssrc));
         }
         if (rtpSession->AddSyncSource(ssrc, OpalRTPSession::e_Receiver, cname) == ssrc) {
-          rtpSession->SetAnySyncSource(false);
+					// Zendesk #19864: Dialogic HMP 361+367 are using another SSRC id in RTP than acknowledged in the SDP.
+					// Kevin:
+					//   *)Softphone set SSRC = AAAAAA om als identifier voor zijn RTP stream te gebruiken
+					//   *)Hierop antwoord CTArchitect met SSRC = AAAAAA(= SSRC van de softphone) terwijl dit zijn eigen unieke value moet zijn(bv: BBBBBB)
+					//	 *)CTArchitect stuurt RTP flow met SSRC = BBBBBB, dewelke de softphone weigert omdat hij AAAAAA verwacht
+					//	 == >Wat in principe correct zou zijn INDIEN CTArchitect hiervoor zijn SSRC value geafficheerd zou hebben als BBBBBB en niet als AAAAAA
+          //rtpSession->SetAnySyncSource(false);
           PTRACE(4, "Session " << session->GetSessionID() << ", added receiver SSRC " << RTP_TRACE_SRC(ssrc));
         }
         rtpSession->SetMediaStreamId(it->second.GetString("mslabel"), ssrc, OpalRTPSession::e_Receiver);
