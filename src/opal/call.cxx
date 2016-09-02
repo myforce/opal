@@ -909,7 +909,7 @@ void OpalCall::OnRecordAudio(const PString & streamId, const RTP_DataFrame & fra
 		return;
 
   PSafeLockReadOnly lock(*this);
-  if (lock.IsLocked() && m_recordManager != NULL && !m_recordManager->WriteAudio(streamId, frame));
+  if (lock.IsLocked() && m_recordManager != NULL && !m_recordManager->WriteAudio(streamId, frame))
 	m_recordManager->CloseStream(streamId);
 }
 
