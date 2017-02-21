@@ -1509,8 +1509,8 @@ class OpalConnection : public PSafeObject
        The default behaviour calls the OpalEndPoint function of the same name.
       */
     virtual void OnUserInputTone(
-      char tone,          ///< Received tone
-      unsigned duration   ///< Duration of tone in milliseconds
+      const char & tone,          ///< Received tone
+      const unsigned & duration   ///< Duration of tone in milliseconds
     );
 
     /**Send a user input indication to the remote endpoint.
@@ -1910,8 +1910,8 @@ class OpalConnection : public PSafeObject
     virtual void EnableRecording();
     virtual void DisableRecording();
 
-    PDECLARE_NOTIFIER(RTP_DataFrame, OpalConnection, OnRecordAudio);
-    void InternalOnRecordAudio(PString key, RTP_DataFrame frame);
+    PDECLARE_NOTIFIER(const RTP_DataFrame, OpalConnection, OnRecordAudio);
+    void InternalOnRecordAudio(const PString & key, const RTP_DataFrame & frame);
 #if OPAL_VIDEO
     PDECLARE_NOTIFIER(RTP_DataFrame, OpalConnection, OnRecordVideo);
     void InternalOnRecordVideo(PString key, RTP_DataFrame frame);

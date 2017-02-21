@@ -1111,8 +1111,7 @@ void OpalConnection::DisableRecording()
 #endif // OPAL_VIDEO
 }
 
-
-void OpalConnection::OnRecordAudio(RTP_DataFrame & frame, P_INT_PTR param)
+void OpalConnection::OnRecordAudio(const RTP_DataFrame & frame, P_INT_PTR param)
 {
   const OpalMediaPatch * patch = (const OpalMediaPatch *)param;
   GetEndPoint().GetManager().QueueDecoupledEvent(new PSafeWorkArg2<OpalConnection, PString, RTP_DataFrame>(
@@ -1120,7 +1119,7 @@ void OpalConnection::OnRecordAudio(RTP_DataFrame & frame, P_INT_PTR param)
 }
 
 
-void OpalConnection::InternalOnRecordAudio(PString key, RTP_DataFrame frame)
+void OpalConnection::InternalOnRecordAudio(const PString & key, const RTP_DataFrame & frame)
 {
   ownerCall.OnRecordAudio(key, frame);
 }
@@ -1396,7 +1395,7 @@ void OpalConnection::OnUserInputString(const PString & value)
 }
 
 
-void OpalConnection::OnUserInputTone(char tone, unsigned duration)
+void OpalConnection::OnUserInputTone(const char & tone, const unsigned & duration)
 {
   endpoint.OnUserInputTone(*this, tone, duration);
 }
