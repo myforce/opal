@@ -284,7 +284,7 @@ class OpalSDPConnection : public OpalRTPConnection
       OpalMediaTransportPtr & bundledTransport
     );
 
-    void RetryHoldRemote(bool placeOnHold);
+    void RetryHoldRemote(const bool & placeOnHold);
     virtual bool OnHoldStateChanged(bool placeOnHold);
     virtual void OnMediaStreamOpenFailed(bool rx);
 

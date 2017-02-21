@@ -1134,7 +1134,7 @@ class OpalConnection : public PSafeObject
     /**Close of a media stream.
     */
     bool CloseMediaStream(
-      OpalMediaStreamPtr stream ///<  Stream to close.
+      const OpalMediaStreamPtr & stream ///<  Stream to close.
     );
 
     /**Remove the specified media stream from the list of streams for this channel.
@@ -1492,7 +1492,7 @@ class OpalConnection : public PSafeObject
     virtual void OnUserInputString(
       const PString & value   ///<  String value of indication
     );
-    void OnUserInputStringCallback(PString value) { OnUserInputString(value); }
+    void OnUserInputStringCallback(const PString & value) { OnUserInputString(value); }
 
     /**Call back for remote enpoint has sent user input.
        If \p duration is zero then this indicates the beginning of the tone.
@@ -1927,7 +1927,7 @@ class OpalConnection : public PSafeObject
 
     bool InternalRelease(CallEndReason reason);
     void InternalOnReleased();
-    void InternalExecuteMediaCommand(OpalMediaCommand * command);
+    void InternalExecuteMediaCommand(OpalMediaCommand * const & command);
 
   protected:
   // Member variables

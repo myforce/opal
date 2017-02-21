@@ -869,7 +869,7 @@ bool OpalConnection::CloseMediaStream(unsigned sessionId, bool source)
 }
 
 
-bool OpalConnection::CloseMediaStream(OpalMediaStreamPtr stream)
+bool OpalConnection::CloseMediaStream(const OpalMediaStreamPtr & stream)
 {
   PSafeLockReadWrite safeLock(*this);
   return stream != NULL && stream->Close();
@@ -1788,7 +1788,7 @@ bool OpalConnection::OnMediaCommand(OpalMediaStream & stream, const OpalMediaCom
 }
 
 
-void OpalConnection::InternalExecuteMediaCommand(OpalMediaCommand * command)
+void OpalConnection::InternalExecuteMediaCommand(OpalMediaCommand * const & command)
 {
   ExecuteMediaCommand(*command, false);
   delete command;

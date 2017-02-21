@@ -660,7 +660,7 @@ void OpalMediaPatch::InternalOnMediaCommand1(OpalMediaCommand & command, P_INT_P
 }
 
 
-void OpalMediaPatch::InternalOnMediaCommand2(OpalMediaCommand * command)
+void OpalMediaPatch::InternalOnMediaCommand2(OpalMediaCommand * const & command)
 {
   m_source.ExecuteCommand(*command);
   delete command;
