@@ -427,6 +427,8 @@ struct OpalHandleStruct
                 args.GetOptionString("build", "0").AsUnsigned(),
                 true)
   {
+    PTRACE_INITIALISE(args);
+
 #if OPAL_PTLIB_CONFIG_FILE
     if (args.HasOption("config"))
       m_process.SetConfigurationPath(args.GetOptionString("config"));
@@ -2898,8 +2900,6 @@ extern "C" {
                   "v-version:", false);
     if (!args.IsParsed())
       return NULL;
-
-    PTRACE_INITIALISE(args);
 
     unsigned callerVersion = 1;
     if (version != NULL) {
