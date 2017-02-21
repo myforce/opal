@@ -163,7 +163,7 @@ bool OpalSDPConnection::HoldRemote(bool placeOnHold)
 }
 
 
-void OpalSDPConnection::RetryHoldRemote(bool placeOnHold)
+void OpalSDPConnection::RetryHoldRemote(const bool & placeOnHold)
 {
   HoldState progressState = placeOnHold ? eRetrieveInProgress : eHoldInProgress;
   PSimpleTimer failsafe(m_endpoint.GetHoldTimeout());
